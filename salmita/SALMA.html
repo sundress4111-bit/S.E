@@ -1,0 +1,269 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>S.E</title>
+  <style>
+    body {
+
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: rgb(14, 13, 13);
+      height: 100vh; /* Altura total de la ventana */
+  margin: 0;
+  background: linear-gradient(to top, #0b0b0b, #565556);
+    
+  margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    
+      overflow: hidden;
+
+      background-image: url('img/salm.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+      
+    }
+    .input-dots {
+      font-size: 2rem;
+      letter-spacing: 10px;
+      margin: 20px 0;
+    }
+
+     .keypad button {
+      width: 60px;
+      height: 60px;
+      margin: 10px;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 10px;
+      background: pink;
+      color: rgb(19, 19, 28);
+      cursor: pointer;
+    }
+
+
+
+     .flower {
+      position: absolute;
+      bottom: -100px; /* empieza debajo */
+      font-size: 2rem;
+      animation: floatUp 6s linear infinite;
+    }
+     @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+     .heart {
+      position: absolute;
+      top: -50px;
+      font-size: 2rem;
+      animation: fall 6s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+
+    button {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  font-size: 20px;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+ .screen {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .active {
+      display: flex;
+    }
+    .password-screen {
+      flex-direction: column;
+      color: rgb(15, 14, 15);
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    .key {
+      background-color: #f8bbd0;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      padding: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .key:hover {
+      background-color: #f48fb1;
+    }
+    .input-display {
+      font-size: 24px;
+      margin-top: 20px;
+      letter-spacing: 8px;
+    }
+    .notepad {
+      background-color: #f48fb1;
+      border: 3px solid #0b0b0b;
+      padding: 20px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      text-align: left;
+      font-family: inherit;
+      line-height: 1.6;
+    
+   
+ 
+    }
+
+
+    .notepad h3 {
+      margin-top: 0;
+    }
+    
+  </style>
+</head>
+<body>
+  
+   <!-- Corazones -->
+  <div class="heart" style="left: 10%;">🤍</div>
+  <div class="heart" style="left: 30%;">🤍</div>
+  <div class="heart" style="left: 50%;">🤍</div>
+  <div class="heart" style="left: 70%;">🤍</div>
+  <div class="heart" style="left: 90%;">🤍</div>
+  <!-- Florecitas -->
+  <div class="flower" style="right: 10%;">🌸</div>
+  <div class="flower" style="left: 30%;">🌼</div>
+  <div class="flower" style="left: 50%;">🌺</div>
+  <div class="flower" style="left: 70%;">🌷</div>
+  <div class="flower" style="right: 90%;">🌹</div>
+
+
+<div id="passwordScreen" class="screen password-screen active">
+  <h2>🔑💻 Adivina la contraseña</h2>
+  <div class="input-display" id="inputDisplay">••••••</div>
+  <div class="keypad">
+    <button class="key" onclick="enterDigit('1')">1</button>
+    <button class="key" onclick="enterDigit('2')">2</button>
+    <button class="key" onclick="enterDigit('3')">3</button>
+    <button class="key" onclick="enterDigit('4')">4</button>
+    <button class="key" onclick="enterDigit('5')">5</button>
+    <button class="key" onclick="enterDigit('6')">6</button>
+    <button class="key" onclick="enterDigit('7')">7</button>
+    <button class="key" onclick="enterDigit('9')">9</button>
+    <button class="key" onclick="enterDigit('8')">8</button>
+    <div></div>
+  
+    <button class="key" onclick="enterDigit('0')">0</button>
+    
+    <div></div>
+  </div>
+</div>
+
+<div id="notepadScreen" class="screen">
+  <div class="notepad">
+    <h3> 15 de Septiembre 2025 </h3>
+    <h4>💝💌🌹 Para: Salmita 🖤🖤🖤 </h4>
+    <p>
+      Hola Salmita, mmmmm estoy practicando mi programcion y quise hacerte esta cartita, esta sencilla pero me costo mucho jaja
+      espero que te guste, programe esto para ti, es la primera vez que hago esto y dedicartelo a ti me parece algo bonito❤️. 
+    </p>
+    <p>
+      Sigo muy pendiente de ti, se que esta mal jaja pero no puedo evitarlo, creo que tienes pareja y esta cool, espero que estes siendo feliz
+      te mereces todo lo bonito de este mundo. Ojala en un futuro pueda estar contigo, no dejo de pensar en ti Salmita, tal vez 
+      cuando termine mi carera pueda estar contigo.❤️❤️❤️❤️
+
+    </p>
+    <p>
+      Espero salir pronto contigo, me gustaria volver a verte, volver a ver lo hermosa que estas, extraño ese lunar tan bonito que tienes en medio, ahí abajo de tu cuellitto❤️
+      Dame una ultima oportunidad, y te juro no volverte a fallar, no se, he perdido tanto por tonto, este ultimo año he estado muy bien, pero estaria mejor a tu lado😢
+
+    </p>
+    <p>
+      Ojalá hubiera forma de saber que estás en los buenos tiempos y disfrutarlos un poco más. ♡
+    </p>
+  </div>
+</div>
+
+<script>
+  function pressNum(num) {
+      if (password.length < 6) {
+        password += num;
+        display.textContent = "•".repeat(password.length);
+      }
+      if (password.length === correctPassword.length) {
+        if (password === correctPassword) {
+          alert("🎉 ¡Contraseña correcta!");
+        } else {
+          alert("❌ Contraseña incorrecta");
+        }
+        // Reinicia
+        password = "";
+        display.textContent = "";
+      }
+    }
+  const correctPassword = '270200';
+  let input = '';
+
+  function enterDigit(digit) {
+    if (input.length < 6) {
+      input += digit;
+    }
+
+    const display = document.getElementById('inputDisplay');
+    display.textContent = input.padEnd(6, '•');
+
+    if (input.length === 6) {
+      if (input === correctPassword) {
+        document.getElementById('passwordScreen').classList.remove('active');
+        document.getElementById('notepadScreen').classList.add('active');
+      } else {
+        alert('mmmmmm no Salmita, es tu cumpleaños');
+        input = '';
+        display.textContent = '••••••';
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
